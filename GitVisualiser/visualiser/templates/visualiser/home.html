@@ -1,0 +1,9 @@
+{%extends "visualiser/base.html" %}
+{% block content %}
+    <h1>Visualiser Home</h1>
+    {% for data in Git_user_data %}
+        <h2>By: {{ data.user }}</h2>
+        <p>Repository: {{ data.repo }}</p>
+        <p>Created on: {{ data.date_created }}</p>
+    {% endfor %}
+{% endblock content %}
