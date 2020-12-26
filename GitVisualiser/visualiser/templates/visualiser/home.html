@@ -2,8 +2,20 @@
 {% block content %}
     <h1>Visualiser Home</h1>
     {% for data in Git_user_data %}
-        <h2>By: {{ data.user }}</h2>
-        <p>Repository: {{ data.repo }}</p>
-        <p>Created on: {{ data.date_created }}</p>
+        <h2>User: {{ data.login }}</h2>
+        {% if data.name %}
+            <p>Name: {{ data.name}}</p>
+        {% else %}
+            <p>Name: Not provided</p>
+        {% endif %}
+        {% if data.location %}
+            <p>location: {{ data.location}}</p>
+        {% else %}
+            <p>location: Not provided</p>
+        {% endif %}
+        <p> Number of public repos: {{ data.no_of_repos }} </p>
+        {% for repos in data.repos%}
+            <p> Repo name: {{repos}} </P>
+        {% endfor %}
     {% endfor %}
 {% endblock content %}
