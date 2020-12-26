@@ -15,16 +15,10 @@ Git_user_data = [
         }
     ]
 
-####
-# inputs
-####
-yourUsername = 'doyleh4'
 
-# from https://github.com/user/settings/tokens
-token = '1cac1dbc068a4e45440aa8893989d16ffa6a8161'
 
 gh_session = requests.Session()
-gh_session.auth = (yourUsername, token)
+#gh_session.auth = (yourUsername, token)
 
 r = gh_session.get(url = 'https://api.github.com/rate_limit', params = {})
 data = r.json()
@@ -35,8 +29,8 @@ url = f"https://api.github.com/users/{username}"
 user_data = gh_session.get(url).json()
 
 def home(request):
-    g = Github(token)
-    #g = Github()
+    #g = Github(token)
+    g = Github()
     user = g.get_user(username)
 
     Git_user_data[0]['login'] = user_data['login']
